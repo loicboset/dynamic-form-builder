@@ -1,0 +1,12 @@
+{
+  "inputs": [
+    {
+      "type": "short text",
+      "name": "Dummy title",
+      "placeholder": "Dummy placeholder",
+      "maxLength": 150,
+      "required": true,
+      "private": false
+    }
+  ]
+}
