@@ -5,7 +5,11 @@ const ShortText = ({ input }) => {
     <div>
       <div className='mt-4'>
         <div>
-          <label>{input.name}</label>
+          <label>
+            {input.name}
+            {input.required && <abbr className='ml-1' title='required'>*</abbr>}
+            {input.private && <span className={input.required ? 'ml-1' : ''}>(private field)</span>}
+          </label>
         </div>
         <div>
           <input className='border border-black rounded p-1 w-full' placeholder={input.placeholder} />

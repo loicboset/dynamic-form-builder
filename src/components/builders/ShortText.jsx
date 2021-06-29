@@ -45,10 +45,13 @@ const ShortText = ({ input, handleChangeInput }) => {
         <div>
           <input
             name='name'
-            className='bg-gray-100'
+            className='bg-gray-100 focus-within:outline-none'
+            size={input.name.length}
             value={input.name}
             onChange={(e) => handleChangeInput(input.id, e.target.name, e.target.value)}
           />
+          {input.required && <abbr title='required'>*</abbr>}
+          {input.private && <span className={input.required ? 'ml-2' : ''}>(private field)</span>}
         </div>
         <div>
           <input
