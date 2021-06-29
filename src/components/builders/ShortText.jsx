@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ShortText = ({ input, handleChangeInput }) => {
-  console.log('input', input);
+
   return (
     <div className='pl-2 my-4 border-l-2'>
       <div>

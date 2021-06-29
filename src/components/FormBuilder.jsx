@@ -44,7 +44,8 @@ const FormBuilder = () => {
     localStorage.setItem('inputs', JSON.stringify(data));
   };
 
-  const handleAddInput = () => {
+  const handleAddInput = (type) => {
+    setModalOpen(false);
     const copyInputs = [...inputs];
     const lastId = copyInputs[copyInputs.length - 1].id
     const newInput = {
@@ -71,7 +72,7 @@ const FormBuilder = () => {
       </div>
 
       <Background modalOpen={modalOpen} setModalOpen={setModalOpen} />
-      <TypeModal modalOpen={modalOpen} />
+      <TypeModal modalOpen={modalOpen} handleAddInput={handleAddInput} />
     </div>
   )
 };
