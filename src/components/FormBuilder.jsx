@@ -67,7 +67,7 @@ const FormBuilder = () => {
         {inputs.map((input) => renderInput(input))}
         <InputSkeleton setModalOpen={setModalOpen} />
       </div>
-      <div>
+      <div className='flex justify-end'>
         <button onClick={() => handleSubmitInputs(inputs)} className='p-1 border border-blue-500 rounded'>Save</button>
       </div>
 

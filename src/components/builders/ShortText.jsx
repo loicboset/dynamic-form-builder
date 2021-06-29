@@ -5,8 +5,9 @@ const ShortText = ({ input, handleChangeInput }) => {
   return (
     <div className='pl-2 my-4 border-l-2'>
       <div>
+        <span>Type: Short Text</span>
         <div>
-          <label htmlFor='maxLength'>Max length:</label>
+          <label htmlFor='maxLength'className='mr-2'>Max length:</label>
           <input
             name='maxLength'
             value={input.maxLength}
