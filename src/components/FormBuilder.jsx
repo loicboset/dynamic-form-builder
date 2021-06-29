@@ -19,6 +19,7 @@ const FormBuilder = () => {
   }, []);
 
   const handleChangeInput = (id, name, value) => {
+    console.log('name, value', name, value)
     const copyInputs = [...inputs];
     const updatedInput = copyInputs.find((input) => input.id === id);
     updatedInput[name] = value;
