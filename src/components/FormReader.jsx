@@ -9,11 +9,11 @@ const FormReader = () => {
     setInputs(JSON.parse(data));
   };
 
-  const renderInput = (input, index) => {
+  const renderInput = (input) => {
     const props = {...{input}}
     switch (input.type) {
       case 'short-text':
-        return <ShortText key={index} {...props} />
+        return <ShortText key={input.id} {...props} />
       default:
         break;
     }
@@ -27,7 +27,7 @@ const FormReader = () => {
       </div>
 
       <div>
-        {inputs.map((input, index) => renderInput(input, index))}
+        {inputs.map((input) => renderInput(input))}
       </div>
     </div>
   )
