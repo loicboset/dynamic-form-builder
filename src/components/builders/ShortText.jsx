@@ -3,7 +3,7 @@ import React from 'react';
 const ShortText = ({ input, handleChangeInput }) => {
   console.log('input', input);
   return (
-    <div className='border-l-2 pl-2'>
+    <div className='pl-2 my-4 border-l-2'>
       <div>
         <div>
           <label htmlFor='maxLength'>Max length:</label>
@@ -41,7 +41,7 @@ const ShortText = ({ input, handleChangeInput }) => {
         </div>
       </div>
 
-      <div className='bg-gray-100 mt-4 p-2'>
+      <div className='p-2 mt-4 bg-gray-100'>
         <div>
           <input
             name='name'
@@ -56,7 +56,7 @@ const ShortText = ({ input, handleChangeInput }) => {
         <div>
           <input
             name='placeholder'
-            className='border border-black rounded p-1 w-full text-gray-400'
+            className='w-full p-1 text-gray-400 border border-black rounded'
             value={input.placeholder}
             onChange={(e) => handleChangeInput(input.id, e.target.name, e.target.value)}
           />

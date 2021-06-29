@@ -9,26 +9,25 @@ const FormReader = () => {
     setInputs(JSON.parse(data));
   };
 
-  const renderInput = (input) => {
+  const renderInput = (input, index) => {
     const props = {...{input}}
     switch (input.type) {
       case 'short-text':
-        return <ShortText key={input.id} {...props} />
+        return <ShortText key={index} {...props} />
       default:
         break;
     }
   };
 
-  console.log('inputs', inputs);
   return (
-    <div className="flex-1 border p-4">
+    <div className="flex-1 p-4 border-l-2">
       <div className='flex justify-around'>
         <span>This is the form reader in the public pages</span>
-        <button onClick={loadInputs} className='border border-blue-500 p-1 rounded'>Reload</button>
+        <button onClick={loadInputs} className='p-1 border border-blue-500 rounded'>Reload</button>
       </div>
 
       <div>
-        {inputs.map((input) => renderInput(input))}
+        {inputs.map((input, index) => renderInput(input, index))}
       </div>
     </div>
   )

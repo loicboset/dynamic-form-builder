@@ -1,7 +1,6 @@
 {
   "inputs": [
     {
-      "id": 1,
       "type": "short-text",
       "name": "Dummy title",
       "placeholder": "Dummy placeholder",
