@@ -1,7 +1,8 @@
 {
   "inputs": [
     {
-      "type": "short text",
+      "id": 1,
+      "type": "short-text",
       "name": "Dummy title",
       "placeholder": "Dummy placeholder",
       "maxLength": 150,
