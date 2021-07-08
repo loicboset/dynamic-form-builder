@@ -18,8 +18,9 @@ import {
 } from '@dnd-kit/sortable';
 
 // Components
-import ShortText from './builders/ShortText';
 import ToolBar from './ToolBar/ToolBar';
+import ShortText from './builders/ShortText';
+import LongText from './builders/LongText';
 
 const FormBuilder = () => {
   const [inputs, setInputs] = useState([]);
@@ -44,9 +45,7 @@ const FormBuilder = () => {
   }, []);
 
   const handleChangeInput = (id, name, value) => {
-    console.log('id, name, value', id, name, value)
     const copyInputs = [...inputs];
-    console.log('copyInputs', copyInputs);
     const updatedInput = copyInputs.find((input) => input.id === id);
     updatedInput[name] = value;
     setInputs(copyInputs);
@@ -57,6 +56,8 @@ const FormBuilder = () => {
     switch (input.type) {
       case 'short-text':
         return <ShortText id={input.id} key={input.id} {...props}/>
+      case 'long-text':
+        return <LongText id={input.id} key={input.id} {...props}/>
       default:
         break;
     }
@@ -65,22 +66,6 @@ const FormBuilder = () => {
   const handleSubmitInputs = (data) => {
     localStorage.setItem('inputs', JSON.stringify(data));
   };
-
-  // const handleAddInput = (type) => {
-  //   setModalOpen(false);
-  //   const copyInputs = [...inputs];
-  //   const lastId = copyInputs[copyInputs.length - 1].id
-  //   const newInput = {
-  //     id: lastId + 1,
-  //     type: 'short-text',
-  //     name: 'Dummy title',
-  //     placeholder: 'Dummy placeholder',
-  //     maxLength: 150,
-  //     required: true,
-  //     private: false
-  //   };
-  //   setInputs([...copyInputs, newInput])
-  // };
 
   const getInputDetails = (inputType) => {
     switch (inputType) {
@@ -91,6 +76,15 @@ const FormBuilder = () => {
           placeholder: 'Dummy placeholder',
           maxLength: 150,
           required: true,
+          private: false
+        }
+      case 'long-text':
+        return {
+          type: 'long-text',
+          name: 'Dummy title',
+          placeholder: 'Dummy placeholder',
+          maxLength: 350,
+          required: false,
           private: false
         }
       default:

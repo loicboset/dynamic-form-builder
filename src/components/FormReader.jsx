@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ShortText from './readers/ShortText';
+import LongText from './readers/LongText';
 
 const FormReader = () => {
   const [inputs, setInputs] = useState([]);
@@ -14,6 +15,8 @@ const FormReader = () => {
     switch (input.type) {
       case 'short-text':
         return <ShortText key={input.id} {...props} />
+      case 'long-text':
+        return <LongText key={input.id} {...props} />
       default:
         break;
     }
