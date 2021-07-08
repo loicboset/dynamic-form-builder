@@ -5,7 +5,7 @@ import {CSS} from '@dnd-kit/utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-const ShortText= (props) => {
+export function TestSortableItem(props) {
   const {
     attributes,
     listeners,
@@ -30,7 +30,7 @@ const ShortText= (props) => {
       <div className='flex-1'>
         <div>
           <span>Type: Short Text</span>
-          {/* <div>
+          <div>
             <label htmlFor='maxLength'className='mr-2'>Max length:</label>
             <input
               name='maxLength'
@@ -63,7 +63,7 @@ const ShortText= (props) => {
             >
               Private
             </span>
-          </div> */}
+          </div>
         </div>
 
         <div className='p-2 mt-4 bg-gray-100'>
@@ -75,29 +75,8 @@ const ShortText= (props) => {
               value={input.name}
               onChange={(e) => handleChangeInput(input.id, e.target.name, e.target.value)}
             />
-            {/* {input.required && <abbr title='required'>*</abbr>}
-            {input.private && <span className={input.required ? 'ml-2' : ''}>(private field)</span>} */}
-            <abbr
-              title='required'
-              name='required'
-              className={`cursor-pointer ${input.required ? '' : 'text-gray-300'}`}
-              onClick={(e) => {
-                handleChangeInput(
-                  input.id, e.target.getAttribute('name'), !input.required
-                );
-              }}
-            >*</abbr>
-            <span
-              name='private'
-              className={`cursor-pointer ml-2 ${input.private ? '' : 'text-gray-300'}`}
-              onClick={(e) => {
-                handleChangeInput(
-                  input.id, e.target.getAttribute('name'), !input.private
-                );
-              }}
-            >
-              (private field)
-            </span>
+            {input.required && <abbr title='required'>*</abbr>}
+            {input.private && <span className={input.required ? 'ml-2' : ''}>(private field)</span>}
           </div>
           <div>
             <input
@@ -108,22 +87,10 @@ const ShortText= (props) => {
             />
           </div>
           <div>
-            <div className='flex justify-end'>
-              0/
-              <input
-              name='maxLength'
-              className='bg-gray-100 focus-within:outline-none'
-              size={8}
-              value={input.maxLength}
-              onChange={(e) => handleChangeInput(input.id, e.target.name, e.target.value)}
-              />
-            </div>
-            {/* {input.maxLength > 0 && <span>{input.maxLength} characters remaining</span>} */}
+            {input.maxLength > 0 && <span>{input.maxLength} characters remaining</span>}
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default ShortText;
