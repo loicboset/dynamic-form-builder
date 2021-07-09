@@ -4,6 +4,7 @@ import LongText from './readers/LongText';
 import Checkbox from './readers/Checkbox';
 import Checkboxes from './readers/Checkboxes';
 import Radio from './readers/Radio';
+import Dropdown from './readers/Dropdown';
 
 const FormReader = () => {
   const [inputs, setInputs] = useState([]);
@@ -26,6 +27,8 @@ const FormReader = () => {
         return <Checkboxes key={input.id} {...props} />
       case 'radio':
         return <Radio key={input.id} {...props} />
+      case 'dropdown':
+        return <Dropdown key={input.id} {...props} />
       default:
         break;
     }
