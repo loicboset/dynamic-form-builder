@@ -2,7 +2,7 @@ import React from 'react';
 
 // components
 import Title from './ui/Title';
-import Checkbox from './ui/CheckboxInput';
+import CheckboxInput from './ui/CheckboxInput';
 
 const Checkboxes = ({ input }) => {
   return (
@@ -10,7 +10,7 @@ const Checkboxes = ({ input }) => {
       <div className='mt-4'>
         <Title input={input} />
         {input.options.map((option) => (
-          <Checkbox key={`${input.id}-${option.name}`} inputId={input.id} option={option} />
+          <CheckboxInput key={`${input.id}-${option.id}`} inputId={input.id} option={option} />
         ))}
       </div>
     </div>
