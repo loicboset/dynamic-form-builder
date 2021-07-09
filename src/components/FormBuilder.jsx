@@ -21,8 +21,9 @@ import {
 import ToolBar from './ToolBar/ToolBar';
 import ShortText from './builders/ShortText';
 import LongText from './builders/LongText';
-import Checkboxes from './builders/Checkboxes';
 import Checkbox from './builders/Checkbox';
+import Checkboxes from './builders/Checkboxes';
+import Radio from './builders/Radio';
 
 const FormBuilder = () => {
   const [inputs, setInputs] = useState([]);
@@ -96,6 +97,15 @@ const FormBuilder = () => {
                 handleAddCheckbox={handleAddCheckbox}
                 {...props}
               />
+      case 'radio':
+        return <Radio
+                id={input.id}
+                key={input.id}
+                handleDeleteCheckbox={handleDeleteCheckbox}
+                handleChangeCheckbox={handleChangeCheckbox}
+                handleAddCheckbox={handleAddCheckbox}
+                {...props}
+              />
       default:
         break;
     }
@@ -137,6 +147,14 @@ const FormBuilder = () => {
           type: 'checkboxes',
           name: 'Dummy checkboxes title',
           options: [{id: 1, name: 'quattro formaggi'}, {id: 2, name: 'prosciutto'}, {id: 3, name: 'hawai'}],
+          required: false,
+          private: false,
+        }
+      case 'radio':
+        return {
+          type: 'radio',
+          name: 'Dummy radio title',
+          options: [{id: 1, name: 'hello'}, {id: 2, name: 'world'}, {id: 3, name: 'foo bar'}],
           required: false,
           private: false,
         }
