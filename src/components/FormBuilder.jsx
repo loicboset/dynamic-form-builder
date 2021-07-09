@@ -25,6 +25,7 @@ import Checkbox from './builders/Checkbox';
 import Checkboxes from './builders/Checkboxes';
 import Radio from './builders/Radio';
 import Dropdown from './builders/Dropdown';
+import File from './builders/File';
 
 const FormBuilder = () => {
   const [inputs, setInputs] = useState([]);
@@ -116,6 +117,10 @@ const FormBuilder = () => {
                 handleAddCheckbox={handleAddCheckbox}
                 {...props}
               />
+      case 'image':
+        return <File id={input.id} key={input.id} {...props}/>
+      case 'file':
+        return <File id={input.id} key={input.id} {...props}/>
       default:
         break;
     }
@@ -173,6 +178,20 @@ const FormBuilder = () => {
           type: 'dropdown',
           name: 'Dummy dropdown title',
           options: [{id: 1, name: 'quattro formaggi'}, {id: 2, name: 'prosciutto'}, {id: 3, name: 'hawai'}],
+          required: false,
+          private: false,
+        }
+      case 'image':
+        return {
+          type: 'image',
+          name: 'Dummy image title',
+          required: false,
+          private: false,
+        }
+      case 'file':
+        return {
+          type: 'file',
+          name: 'Dummy file title',
           required: false,
           private: false,
         }
