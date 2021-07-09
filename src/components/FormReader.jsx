@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ShortText from './readers/ShortText';
 import LongText from './readers/LongText';
+import Checkboxes from './readers/Checkboxes';
 
 const FormReader = () => {
   const [inputs, setInputs] = useState([]);
@@ -17,6 +18,8 @@ const FormReader = () => {
         return <ShortText key={input.id} {...props} />
       case 'long-text':
         return <LongText key={input.id} {...props} />
+      case 'checkboxes':
+        return <Checkboxes key={input.id} {...props} />
       default:
         break;
     }

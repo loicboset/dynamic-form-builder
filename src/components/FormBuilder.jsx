@@ -21,6 +21,7 @@ import {
 import ToolBar from './ToolBar/ToolBar';
 import ShortText from './builders/ShortText';
 import LongText from './builders/LongText';
+import Checkboxes from './builders/Checkboxes';
 
 const FormBuilder = () => {
   const [inputs, setInputs] = useState([]);
@@ -44,10 +45,35 @@ const FormBuilder = () => {
       )
   }, []);
 
-  const handleChangeInput = (id, name, value) => {
+  const handleChangeInput = (inputId, name, value) => {
     const copyInputs = [...inputs];
-    const updatedInput = copyInputs.find((input) => input.id === id);
+    const updatedInput = copyInputs.find((input) => input.id === inputId);
     updatedInput[name] = value;
+    setInputs(copyInputs);
+  };
+
+  const handleAddCheckbox = (inputId) => {
+    const copyInputs = [...inputs];
+    const updatedInput = copyInputs.find((input) => input.id === inputId);
+    const IDs = updatedInput.options.map((option) => parseInt(option.id, 10));
+    const nextId = IDs.sort((a, b) => a - b)[IDs.length - 1] + 1
+    updatedInput.options.push({id: nextId, name: 'new checkbox'})
+    setInputs(copyInputs);
+  };
+
+  const handleChangeCheckbox = (inputId, optionId, optionName) => {
+    const copyInputs = [...inputs];
+    const updatedInput = copyInputs.find((input) => input.id === inputId);
+    const optionIndex = updatedInput.options.findIndex((option) => option.id === optionId);
+    updatedInput.options[optionIndex].name = optionName;
+    setInputs(copyInputs);
+  };
+
+  const handleDeleteCheckbox = (inputId, optionId) => {
+    const copyInputs = [...inputs];
+    const updatedInput = copyInputs.find((input) => input.id === inputId);
+    const optionIndex = updatedInput.options.findIndex((option) => option.id === optionId);
+    updatedInput.options.splice(optionIndex, 1);
     setInputs(copyInputs);
   };
 
@@ -58,6 +84,15 @@ const FormBuilder = () => {
         return <ShortText id={input.id} key={input.id} {...props}/>
       case 'long-text':
         return <LongText id={input.id} key={input.id} {...props}/>
+      case 'checkboxes':
+        return <Checkboxes
+                id={input.id}
+                key={input.id}
+                handleDeleteCheckbox={handleDeleteCheckbox}
+                handleChangeCheckbox={handleChangeCheckbox}
+                handleAddCheckbox={handleAddCheckbox}
+                {...props}
+              />
       default:
         break;
     }
@@ -86,6 +121,14 @@ const FormBuilder = () => {
           maxLength: 350,
           required: false,
           private: false
+        }
+      case 'checkboxes':
+        return {
+          type: 'checkboxes',
+          name: 'Dummy title',
+          options: [{id: 1, name: 'quattro formaggi'}, {id: 2, name: 'prosciutto'}, {id: 3, name: 'hawai'}],
+          required: false,
+          private: false,
         }
       default:
         break;
