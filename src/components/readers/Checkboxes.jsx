@@ -2,7 +2,7 @@ import React from 'react';
 
 // components
 import Title from './ui/Title';
-import Checkbox from './ui/Checkbox';
+import Checkbox from './ui/CheckboxInput';
 
 const Checkboxes = ({ input }) => {
   return (

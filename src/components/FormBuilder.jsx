@@ -22,6 +22,7 @@ import ToolBar from './ToolBar/ToolBar';
 import ShortText from './builders/ShortText';
 import LongText from './builders/LongText';
 import Checkboxes from './builders/Checkboxes';
+import Checkbox from './builders/Checkbox';
 
 const FormBuilder = () => {
   const [inputs, setInputs] = useState([]);
@@ -84,6 +85,8 @@ const FormBuilder = () => {
         return <ShortText id={input.id} key={input.id} {...props}/>
       case 'long-text':
         return <LongText id={input.id} key={input.id} {...props}/>
+      case 'checkbox':
+        return <Checkbox id={input.id} key={input.id} {...props}/>
       case 'checkboxes':
         return <Checkboxes
                 id={input.id}
@@ -107,7 +110,7 @@ const FormBuilder = () => {
       case 'short-text':
         return {
           type: 'short-text',
-          name: 'Dummy title',
+          name: 'Dummy short text title',
           placeholder: 'Dummy placeholder',
           maxLength: 150,
           required: true,
@@ -116,16 +119,23 @@ const FormBuilder = () => {
       case 'long-text':
         return {
           type: 'long-text',
-          name: 'Dummy title',
+          name: 'Dummy long text title',
           placeholder: 'Dummy placeholder',
           maxLength: 350,
           required: false,
           private: false
         }
+      case 'checkbox':
+        return {
+          type: 'checkbox',
+          name: 'Do you accept something?',
+          required: false,
+          private: false,
+        }
       case 'checkboxes':
         return {
           type: 'checkboxes',
-          name: 'Dummy title',
+          name: 'Dummy checkboxes title',
           options: [{id: 1, name: 'quattro formaggi'}, {id: 2, name: 'prosciutto'}, {id: 3, name: 'hawai'}],
           required: false,
           private: false,
