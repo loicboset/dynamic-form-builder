@@ -26,6 +26,7 @@ import Checkboxes from './builders/Checkboxes';
 import Radio from './builders/Radio';
 import Dropdown from './builders/Dropdown';
 import File from './builders/File';
+import Map from './builders/Map';
 
 const FormBuilder = () => {
   const [inputs, setInputs] = useState([]);
@@ -121,6 +122,8 @@ const FormBuilder = () => {
         return <File id={input.id} key={input.id} {...props}/>
       case 'file':
         return <File id={input.id} key={input.id} {...props}/>
+      case 'map':
+        return <Map id={input.id} key={input.id} {...props}/>
       default:
         break;
     }
@@ -192,6 +195,15 @@ const FormBuilder = () => {
         return {
           type: 'file',
           name: 'Dummy file title',
+          required: false,
+          private: false,
+        }
+      case 'map':
+        return {
+          type: 'map',
+          name: 'Dummy map title',
+          lat: 51.19233320049281,
+          lng: 2.8249530184213145,
           required: false,
           private: false,
         }

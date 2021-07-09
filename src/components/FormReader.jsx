@@ -6,6 +6,7 @@ import Checkboxes from './readers/Checkboxes';
 import Radio from './readers/Radio';
 import Dropdown from './readers/Dropdown';
 import File from './readers/File';
+import Map from './readers/Map';
 
 const FormReader = () => {
   const [inputs, setInputs] = useState([]);
@@ -34,6 +35,8 @@ const FormReader = () => {
         return <File key={input.id} {...props} />
       case 'file':
         return <File key={input.id} {...props} />
+      case 'map':
+        return <Map key={input.id} {...props} />
       default:
         break;
     }
