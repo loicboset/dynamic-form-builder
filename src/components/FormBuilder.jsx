@@ -235,7 +235,7 @@ const FormBuilder = () => {
     const copyInputs = [...inputs];
     const IDs = inputs.map((input) => parseInt(input.id, 10))
     const newInput = getInputDetails(inputType);
-    const nextId = IDs.sort((a, b) => a - b)[IDs.length - 1] + 1
+    const nextId = IDs.length === 0 ? 1 : IDs.sort((a, b) => a - b)[IDs.length - 1] + 1
     newInput.id = nextId.toString();
     setInputs([...copyInputs, newInput])
   };
