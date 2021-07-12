@@ -11,13 +11,21 @@ import Map from './readers/Map';
 const FormReader = () => {
   const [inputs, setInputs] = useState([]);
 
+  // Funcs
   const loadInputs = () => {
     const data = localStorage.getItem('inputs');
     setInputs(JSON.parse(data));
   };
 
+  const handleUpdateInputValue = (inputId, inputValue) => {
+    const copyInputs = [...inputs];
+    const inputToUpdate = copyInputs.find((input) => input.id === inputId);
+    inputToUpdate.value = inputValue;
+    setInputs(copyInputs);
+  };
+
   const renderInput = (input) => {
-    const props = {...{input}}
+    const props = {...{input, handleUpdateInputValue}}
     switch (input.type) {
       case 'short-text':
         return <ShortText key={input.id} {...props} />
@@ -42,6 +50,7 @@ const FormReader = () => {
     }
   };
 
+  console.log('inputs', inputs);
   return (
     <div className="flex-1 p-4 border-l-2">
       <div className='flex justify-around'>

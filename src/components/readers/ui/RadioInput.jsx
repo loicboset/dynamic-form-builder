@@ -1,13 +1,14 @@
 import React from 'react';
 
-const RadioInput = ({ inputId, option }) => {
+const RadioInput = ({ inputId, option, handleUpdateInputValue }) => {
 
   return (
     <div>
       <input
         type="radio"
-        id={`${inputId}-${option.id}`}
-        name={option.name}
+        name={inputId}
+        value={option.name}
+        onChange={() => handleUpdateInputValue(inputId, option.name)}
       />
       <label htmlFor={option.name} className='ml-2'>{option.name}</label>
     </div>

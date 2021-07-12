@@ -4,15 +4,15 @@ import React from 'react';
 import Title from './ui/Title';
 import FileInput from './ui/FileInput';
 
-const ShortText = ({ input }) => {
+const File = ({ input, handleUpdateInputValue }) => {
   return (
     <div>
       <div className='mt-4'>
         <Title input={input} />
-        <FileInput input={input} />
+        <FileInput input={input} handleUpdateInputValue={handleUpdateInputValue} />
       </div>
     </div>
   )
 };
 
-export default ShortText;
+export default File;
