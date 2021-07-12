@@ -18,7 +18,7 @@ const Dropdown= (props) => {
 
   return (
     <div className='flex-1'>
-      <InputTypeName typeName="Dropdown"/>
+      <InputTypeName typeName="Dropdown" inputId={input.id}/>
 
       <div className='p-2 mt-4 bg-gray-100'>
         <Title input={input} handleChangeInput={handleChangeInput} />
@@ -34,7 +34,7 @@ const Dropdown= (props) => {
           <div className='flex flex-col mt-2'>
             <span className='mb-1 italic'>Manage Options</span>
             {input.options.map((option) => (
-              <div>
+              <div key={option.id}>
                 <input
                   className='px-1 mb-1'
                   value={option.name}

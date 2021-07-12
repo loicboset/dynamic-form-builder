@@ -12,7 +12,7 @@ const Checkbox = (props) => {
 
   return (
     <div className='flex-1'>
-      <InputTypeName typeName="Checkboxes"/>
+      <InputTypeName typeName="Checkboxes" inputId={input.id}/>
 
       <div className='flex items-center p-2 mt-4 bg-gray-100'>
         <input

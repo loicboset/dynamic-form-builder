@@ -1,10 +1,13 @@
 import React from 'react';
 
-const InputTypeName = ({ typeName }) => {
+import DeleteItem from './DeleteItem';
+
+const InputTypeName = ({ typeName, inputId }) => {
 
   return (
     <div>
       <span>Type: {typeName}</span>
+      <DeleteItem inputId={inputId} />
     </div>
   )
 };

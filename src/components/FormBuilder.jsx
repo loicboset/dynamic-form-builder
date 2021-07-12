@@ -28,6 +28,8 @@ import Dropdown from './builders/Dropdown';
 import File from './builders/File';
 import Map from './builders/Map';
 
+export const Context = React.createContext();
+
 const FormBuilder = () => {
   const [inputs, setInputs] = useState([]);
 
@@ -83,50 +85,67 @@ const FormBuilder = () => {
   };
 
   const renderInput = (input) => {
-    const props = {...{input, handleChangeInput}};
+    const props = {...{input, handleChangeInput, handleDeleteItem}};
+    let InputComp;
+
     switch (input.type) {
       case 'short-text':
-        return <ShortText id={input.id} key={input.id} {...props}/>
+        InputComp = <ShortText id={input.id} {...props}/>;
+        break;
       case 'long-text':
-        return <LongText id={input.id} key={input.id} {...props}/>
+        InputComp = <LongText id={input.id} {...props}/>;
+        break;
       case 'checkbox':
-        return <Checkbox id={input.id} key={input.id} {...props}/>
+        InputComp = <Checkbox id={input.id} {...props}/>;
+        break;
       case 'checkboxes':
-        return <Checkboxes
+        InputComp = <Checkboxes
                 id={input.id}
                 key={input.id}
                 handleDeleteCheckbox={handleDeleteCheckbox}
                 handleChangeCheckbox={handleChangeCheckbox}
                 handleAddCheckbox={handleAddCheckbox}
                 {...props}
-              />
+              />;
+        break;
       case 'radio':
-        return <Radio
+        InputComp = <Radio
                 id={input.id}
                 key={input.id}
                 handleDeleteCheckbox={handleDeleteCheckbox}
                 handleChangeCheckbox={handleChangeCheckbox}
                 handleAddCheckbox={handleAddCheckbox}
                 {...props}
-              />
+              />;
+        break;
       case 'dropdown':
-        return <Dropdown
+        InputComp = <Dropdown
                 id={input.id}
                 key={input.id}
                 handleDeleteCheckbox={handleDeleteCheckbox}
                 handleChangeCheckbox={handleChangeCheckbox}
                 handleAddCheckbox={handleAddCheckbox}
                 {...props}
-              />
+              />;
+        break;
       case 'image':
-        return <File id={input.id} key={input.id} {...props}/>
+        InputComp = <File id={input.id} {...props}/>;
+        break;
       case 'file':
-        return <File id={input.id} key={input.id} {...props}/>
+        InputComp = <File id={input.id} {...props}/>;
+        break;
       case 'map':
-        return <Map id={input.id} key={input.id} {...props}/>
+        InputComp = <Map id={input.id} {...props}/>;
+        break;
       default:
         break;
-    }
+    };
+
+    return (
+      <Context.Provider key={input.id} value={{ handleDeleteItem  }}>
+        {InputComp}
+      </Context.Provider>
+    )
   };
 
   const handleSubmitInputs = (data) => {
@@ -219,6 +238,13 @@ const FormBuilder = () => {
     const nextId = IDs.sort((a, b) => a - b)[IDs.length - 1] + 1
     newInput.id = nextId.toString();
     setInputs([...copyInputs, newInput])
+  };
+
+  const handleDeleteItem = (inputId) => {
+    const copyInputs = [...inputs];
+    const index = copyInputs.findIndex((input) => input.id === inputId);
+    copyInputs.splice(index, 1);
+    setInputs(copyInputs);
   };
 
   const handleDragEnd = (event) => {

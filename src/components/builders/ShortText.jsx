@@ -14,7 +14,7 @@ const ShortText= (props) => {
 
   return (
     <div className='flex-1'>
-      <InputTypeName typeName="Short Text"/>
+      <InputTypeName typeName="Short Text" inputId={input.id}/>
 
       <div className='p-2 mt-4 bg-gray-100'>
         <Title input={input} handleChangeInput={handleChangeInput} />
